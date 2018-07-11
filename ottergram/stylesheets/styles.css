@@ -14,6 +14,7 @@
   src: url('fonts/LAKESHOR-webfont.eot?#iefix') format('embedded-opentype'), url('fonts/LAKESHOR-webfont.woff') format('woff'), url('fonts/LAKESHOR-webfont.ttf') format('truetype'), url('fonts/LAKESHOR-webfont.svg#lakeshore') format('svg');
 }
 
+
 html, body {
   height: 100%;
 }
@@ -43,6 +44,7 @@ a[href="#"] {
 .detail-image-frame {
   position: relative;
   text-align: center;
+  transition: transform 333ms cubic-bezier(1,.04,.7,.69);
 }
 
 .detail-image-title {
@@ -53,6 +55,24 @@ a[href="#"] {
   left: 4px;
   position: absolute;
   text-shadow: rgba(0, 0, 0, 0.9) 1px 2px 9px;
+}
+
+.hidden-detail .detail-image-container {
+  display: none;
+}
+
+.hidden-detail .thumbnail-list {
+  align-items: center;
+  flex-direction: column;
+}
+
+.hidden-detail .thumbnail-item {
+  max-width: 80%;
+}
+
+.is-tiny {
+  transform: scale(0.001);
+  transition: transform 0ms;
 }
 
 .logo-text {
@@ -79,6 +99,11 @@ a[href="#"] {
   display: inline-block;
   min-width: 120px;
   max-width: 120px;
+  transition: transform 133ms ease-in-out;
+}
+
+.thumbnal-item:hover {
+  transform: scale(1.2);
 }
 
 .thumbnail-list {
@@ -88,7 +113,7 @@ a[href="#"] {
   list-style: none;
   order: 2;
   overflow-x: auto;
-  padding: 0;
+  padding: 20px 0;
   white-space: nowrap;
 }
 
@@ -104,4 +129,26 @@ a[href="#"] {
   font-size: 18px;
   margin: 0;
   padding: 4px 10px;
+}
+
+@media all and (min-width: 768px) {
+  .main-content {
+    flex-direction: row;
+    overflow: hidden;
+  }
+
+  .thumbnail-list {
+    flex-direction: column;
+    order: 0;
+    margin-left: 20px;
+    padding: 0 35px;
+  }
+
+  .thumbnail-item {
+    max-width: 260px;
+  }
+
+  .thumbnail-item + .thumbnail-item {
+    margin-top: 20px;
+  }
 }
